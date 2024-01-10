@@ -1,0 +1,57 @@
+import java.util.Scanner;
+public class Product {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        String name = "";
+        double weight = 0.0;
+        int year = 0;
+        char firstLetter = '\0';
+
+        System.out.println("Введіть інформацію про продукт:");
+
+        while (name.isEmpty()) {
+            System.out.print("Назва продукту: ");
+            name = scanner.nextLine();
+            if (name.isEmpty()) {
+                System.out.println("Назва не може бути порожньою. Будь ласка, введіть назву.");
+            }
+        }
+
+        while (weight <= 0) {
+            System.out.print("Вага продукту (кг): ");
+            if (scanner.hasNextDouble()) {
+                weight = scanner.nextDouble();
+                if (weight <= 0) {
+                    System.out.println("Вага повинна бути додатнім числом. Будь ласка, введіть вагу.");
+                }
+            } else {
+                System.out.println("Неправильний формат числа. Будь ласка, введіть вагу.");
+                scanner.next();
+            }
+        }
+
+        while (year <= 0) {
+            System.out.print("Рік виробництва: ");
+            if (scanner.hasNextInt()) {
+                year = scanner.nextInt();
+                if (year <= 0) {
+                    System.out.println("Рік виробництва повинен бути додатним числом. Будь ласка, введіть рік.");
+                }
+            } else {
+                System.out.println("Неправильний формат числа. Будь ласка, введіть рік.");
+                scanner.next();
+            }
+        }
+
+        if (name.isEmpty()) {
+            firstLetter = name.charAt(0);
+        }
+
+        System.out.println("Результат:");
+        System.out.println("Назва: " + name);
+        System.out.println("Вага: " + weight + " кг");
+        System.out.println("Рік виробництва: " + year);
+        System.out.println("Перша літера назви: " + firstLetter);
+
+        scanner.close();
+
